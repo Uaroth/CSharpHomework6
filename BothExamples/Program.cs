@@ -34,18 +34,32 @@
 
 // Интернет напоминает - пересекутся там, где их уравнения равны.
 // k1 * x + b1 = k2 * x + b2
-// x(k1+k2) = b2 - b1
+// x(k1-k2) = b2 - b1
 // x = (b2-b1)/(k1+k2)
 
 Console.WriteLine("Здравствуйте. Введите b1, k1, b2 и k2 через пробел");
 
 string userText = Console.ReadLine();
 string[] userArray = userText.Split(" ");
-int[] ReadNumbers (string [] text)
-//     int size = userArray.Length;
-//     int[] numbersArray = new int[size];
+double [] userNumbers = ReadNumbers (userArray);
 
-//     for (int i = 0; i < text.Length; i++)
-//     {
-//         numbersArray[i] = int.Parse(text[i]);
-//     }
+double b1 = userNumbers[0];
+double k1 = userNumbers[1];
+double b2 = userNumbers[2];
+double k2 = userNumbers[3];
+
+double x = (b2-b1)/(k1-k2);
+double y = k1 * x + b1;
+Console.WriteLine($"Точка пересечения имеет координаты ({x},{y})");
+
+double[] ReadNumbers(string[] text)
+{
+    int size = text.Length;
+    double[] numbersArray = new double[size];
+
+    for (int i = 0; i < text.Length; i++)
+    {
+        numbersArray[i] = double.Parse(text[i]);
+    }
+    return numbersArray;
+}
